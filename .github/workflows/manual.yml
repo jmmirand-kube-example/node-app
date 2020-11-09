@@ -21,7 +21,7 @@ jobs:
     name: Push Docker image to multiple registries
     runs-on: ubuntu-latest
     steps:
-       - shell: bash
+       - name: test bash
          env:
            SUPER_SECRET: ${{ secrets.DOCKER_USERNAME }}
          run: |
