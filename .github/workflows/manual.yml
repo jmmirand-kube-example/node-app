@@ -22,10 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
        - name: test bash
-         env:
-           SUPER_SECRET: ${{ secrets.DOCKER_USERNAME }}
          run: |
-           echo  "$SUPER_SECRET"
+           echo  "Hola Mundo"
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Push to Docker Hub
