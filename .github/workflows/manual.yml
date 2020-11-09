@@ -30,11 +30,3 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: jmmmirand/node-app-test-hello-world
           tag_with_ref: true
-      - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: my-org/my-repo/my-image
-          tag_with_ref: true
