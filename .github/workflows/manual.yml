@@ -39,3 +39,4 @@ jobs:
           repository: jmmirand/node-app-test-hello-world
           tags: latest
           platforms: linux/amd64,linux/arm64
+          push: true
