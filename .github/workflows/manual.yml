@@ -24,12 +24,10 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
     
-      - name: Variables Secrets
+      - name: Get Secrests
         env:
            DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
            NAME: 'JOSE MIGUEL'
- 
-      - name: Get Secrests
         run: 'echo $DOCKER_USER y $NAME'
 
       - name: Push to Docker Hub
