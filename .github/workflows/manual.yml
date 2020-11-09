@@ -36,5 +36,4 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           dockerfile: ./Dockerfile
-          tags:
-            jmmirand/node-app-test-hello-world:latest
+          tags: jmmirand/node-app-test-hello-world:latest
