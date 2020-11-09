@@ -21,6 +21,11 @@ jobs:
     name: Push Docker image to multiple registries
     runs-on: ubuntu-latest
     steps:
+       - shell: bash
+         env:
+           SUPER_SECRET: ${{ secrets.DOCKER_USERNAME }}
+         run: |
+           echo  "$SUPER_SECRET"
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Push to Docker Hub
