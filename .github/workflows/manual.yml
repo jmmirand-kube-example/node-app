@@ -46,3 +46,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           tags: jmmirand/node-app-test-hello-world:latest
+          push: true
