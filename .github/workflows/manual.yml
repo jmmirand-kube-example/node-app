@@ -29,25 +29,21 @@ jobs:
            DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
            NAME: 'JOSE MIGUEL'
         run: 'echo $DOCKER_USER y $NAME'
+      
+      - name: Print docker arquitectures
+        run: |
+          docker buildx create --use
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push to Docker Hub amd64
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: ./Dockerfile
-          repository: jmmirand/node-app-test-hello-world
-          tags: latest
-          platforms: linux/amd64
-          push: true
-
-      - name: Push to Docker Hub arm
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: ./Dockerfile
-          repository: jmmirand/node-app-test-hello-world
-          tags: latest-arm
-          platform: linux/arm/v7
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64
+          tags: jmmirand/node-app-test-hello-world:latest
           push: true
