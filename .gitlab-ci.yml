@@ -12,5 +12,7 @@ build:
   stage: build
   script:
     - docker build -t jmmirand/node-app-test-hello-world:latest-gitlab .
-    - docker login -u "$CI_USER" -p "$CI_PASSWORD"
+    - echo "Usuario : $CI_USER"
+    - echo "Password : $CI_PASSWORD" 
+    - docker login -u "$CI_USER" -p "$CI_PASSWORD" http://docker.io
     - docker push jmmirand/node-app-test-hello-world:latest-gitlab
