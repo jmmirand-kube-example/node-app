@@ -1,16 +1,16 @@
-name: Build Docker Multi-Arch with Buildx
+name: Build Docker Multi-Arch with Buildx edge
 
-on:
-  workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
-        # Default value if no value is explicitly provided
-        default: 'jmmirand'
-        # Input has to be provided for the workflow to run
-        required: true
+on: push
+#  workflow_dispatch:
+#    # Inputs the workflow accepts.
+#    inputs:
+#      name:
+#        # Friendly description to be shown in the UI instead of 'name'
+#        description: 'Person to greet'
+#        # Default value if no value is explicitly provided
+#        default: 'jmmirand'
+#        # Input has to be provided for the workflow to run
+#        required: true
 
 jobs:
   buildx:
