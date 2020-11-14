@@ -47,6 +47,19 @@ Esta funcionalidad es experimental en la versión 19.03.5 de
 [buildx](https://docs.docker.com/buildx/working-with-buildx/) con un único
 comando.
 
+**Se requiere que se active la funcionalidad experimental**
+
+```
+➜ $ docker buildx build --push --tag jmmirand/test:multi-arq --platform linux/amd64,linux/arm/v7,linux/arm/v8 .
+
+[+] Building 76.4s (13/14)
+....
+ => pushing manifest for docker.io/jmmirand/test:multi-arq
+ ```
+
+
+
+
 
 
 
@@ -68,3 +81,5 @@ publica en docker-hub [node-app-test-hello-world](https://hub.docker.com/reposit
  * [ Actions Docker Buildx ](https://github.com/marketplace/actions/docker-buildx)
  * [ Docker Buildx ](https://github.com/docker/buildx)
  * [ Build and push docker images ](https://github.com/marketplace/actions/build-and-push-docker-images)
+ * [Multi-arch build and images, the simple way 1/2](https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/)
+ * [Multi-arch build, what about GitLab CI? 2/2](https://www.docker.com/blog/multi-arch-build-what-about-gitlab-ci/)
