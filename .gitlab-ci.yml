@@ -15,6 +15,8 @@ before_script:
   - curl --silent -L "https://github.com/docker/buildx/releases/download/${BUILDX_VER}/buildx-${BUILDX_VER}.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
   - chmod a+x ~/.docker/cli-plugins/docker-buildx
   - docker run --rm --privileged hypriot/qemu-register
+  - export DOCKER_CLI_EXPERIMENTAL="enabled"
+  - systemctl restart docker
   - docker buildx create --use
   - docker context create old-style
   - docker buildx create old-style --use
