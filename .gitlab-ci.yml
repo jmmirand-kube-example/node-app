@@ -9,7 +9,6 @@ variables:
   - DOCKER_CLI_EXPERIMENTAL: "enabled"
 
 before_script:
-  - export DOCKER_CLI_EXPERIMENTAL="enabled"
   - docker info
   - apk add curl make
   - mkdir -vp ~/.docker/cli-plugins/ ~/dockercache
