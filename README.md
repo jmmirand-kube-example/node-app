@@ -60,11 +60,11 @@ push en dockerhub.
  => pushing manifest for docker.io/jmmirand/test:multi-arq
  ```
 
-Referencias :
- * [Working with buildx](https://docs.docker.com/buildx/working-with-buildx/)
+* **Referencias** :
+  * [Working with buildx**](https://docs.docker.com/buildx/working-with-buildx/)
 
 
-## Github Actions
+## Github Actions
 
 Tengo dos workflows que publican la misma imagen
 publica en docker-hub [node-app-test-hello-world](https://hub.docker.com/repository/registry-1.docker.io/jmmirand/node-app-test-hello-world/tags?page=1)
