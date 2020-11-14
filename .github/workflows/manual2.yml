@@ -1,4 +1,4 @@
-name: buildx
+name: Build Docker Multi-Arch with Buildx
 
 on:
   workflow_dispatch:

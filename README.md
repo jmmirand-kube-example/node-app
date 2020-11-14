@@ -64,12 +64,54 @@ push en dockerhub.
   * [Working with buildx**](https://docs.docker.com/buildx/working-with-buildx/)
 
 
+# Motores de Integración Continua (CI)
+
+
+
 ## Github Actions
 
-Tengo dos workflows que publican la misma imagen
-publica en docker-hub [node-app-test-hello-world](https://hub.docker.com/repository/registry-1.docker.io/jmmirand/node-app-test-hello-world/tags?page=1)
+Hay dos workflows para Github Actions que publican la misma imagen
+publica en docker-hub en amd64 y arm/v7. [node-app-test-hello-world](https://hub.docker.com/repository/registry-1.docker.io/jmmirand/node-app-test-hello-world/tags?page=1)
 
-  * *manual.yml* : Construye la imagen y publica con latest con la acción **build and push docker images**
+### docker/build-push-action@v2
+
+**./node-app/.github/workflows/manual.yml**
+
+Con esta acción (v2) definimos los parámetros de construcción y push al registro.
+
+```
+- name: Login to DockerHub
+  uses: docker/login-action@v1
+  with:
+    username: ${{ secrets.DOCKER_USERNAME }}
+    password: ${{ secrets.DOCKER_PASSWORD }}
+
+- name: Push to Docker Hub amd64
+  uses: docker/build-push-action@v2
+  with:
+    file: ./Dockerfile
+    platforms: linux/amd64,linux/arm64,linux/arm/v7
+    tags: jmmirand/node-app-test-hello-world:latest-github
+    push: true
+```
+
+
+**./node-app/.github/workflows/manual2.yml**
+
+Con esta acción (v2) definimos los parámetros de construcción y push al registro.
+
+```
+- name: Push to Docker Hub amd64
+  uses: docker/build-push-action@v2
+  with:
+    file: ./Dockerfile
+    platforms: linux/amd64,linux/arm64,linux/arm/v7
+    tags: jmmirand/node-app-test-hello-world:latest-github
+    push: true
+```
+
+
+
   * *manual2.yml* : Construye la imagen con buildx
 
 
