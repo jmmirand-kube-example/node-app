@@ -4,11 +4,9 @@ name: Publish node-app-test-hello-world app.
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
-  on: 
-    push:
-      branches:
-        - main
-        - main-github 
+on: 
+  push:
+    branches: [ main, main-github] 
 #  workflow_dispatch:
 #    # Inputs the workflow accepts.
 #    inputs:
