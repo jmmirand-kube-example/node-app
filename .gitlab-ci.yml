@@ -5,6 +5,9 @@ default:
 services:
   - docker:19.03.12-dind
 
+variables:
+  - DOCKER_CLI_EXPERIMENTAL: "enabled"
+
 before_script:
   - docker info
   - apk add curl make
@@ -12,7 +15,6 @@ before_script:
   - curl --silent -L "https://github.com/docker/buildx/releases/download/${BUILDX_VER}/buildx-${BUILDX_VER}.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
   - chmod a+x ~/.docker/cli-plugins/docker-buildx
   - docker run --rm --privileged hypriot/qemu-register
-  - cat  ~/.docker/config.json
   - docker buildx create --use
   - docker context create old-style
   - docker buildx create old-style --use
