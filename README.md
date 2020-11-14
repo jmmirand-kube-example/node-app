@@ -98,16 +98,19 @@ Con esta acción (v2) definimos los parámetros de construcción y push al regis
 
 **./node-app/.github/workflows/manual2.yml**
 
-Con esta acción (v2) definimos los parámetros de construcción y push al registro.
+Se construye la imagen con el comando buildx.
 
 ```
-- name: Push to Docker Hub amd64
-  uses: docker/build-push-action@v2
+- name: Login to DockerHub
+  if: success() && github.event_name != 'pull_request'
+  uses: docker/login-action@v1
   with:
-    file: ./Dockerfile
-    platforms: linux/amd64,linux/arm64,linux/arm/v7
-    tags: jmmirand/node-app-test-hello-world:latest-github
-    push: true
+    username: ${{ secrets.DOCKER_USERNAME }}
+    password: ${{ secrets.DOCKER_PASSWORD }}
+- name: Docker Buildx (push)
+  if: success() && github.event_name != 'pull_request'
+  run: |
+
 ```
 
 
