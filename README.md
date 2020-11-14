@@ -33,18 +33,18 @@ $ docker build --tag jmmirand/test:armv7 --platform linux/arm/v7 .
 $ docker build --tag jmmirand/test:armv8 --build-arg TARGETPLATFORM=linux/arm/v8 .
 ```
 
-** El problema de este método es que una misma etiqueta no puede tener varias
-arquitectura.
+**El problema de este método es que una misma etiqueta no puede tener varias
+arquitectura**
 
 
-Referencia : [ Automatic platform ARGs in the global scope ](https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope)
+Referencia : [Automatic platform ARGs in the global scope](https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope)
 
 
 
-### Docker buildx
+### Docker Buildx
 
 Esta funcionalidad es experimental en la versión 19.03.5 de
-[ buildx ](https://docs.docker.com/buildx/working-with-buildx/) con un único
+[buildx](https://docs.docker.com/buildx/working-with-buildx/) con un único
 comando.
 
 
