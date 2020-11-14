@@ -49,6 +49,9 @@ comando.
 
 **Se requiere que se active la funcionalidad experimental**
 
+Con un único commando construimos la imagenes para varias plataformas y se hace
+push en dockerhub.
+
 ```
 ➜ $ docker buildx build --push --tag jmmirand/test:multi-arq --platform linux/amd64,linux/arm/v7,linux/arm/v8 .
 
@@ -57,14 +60,8 @@ comando.
  => pushing manifest for docker.io/jmmirand/test:multi-arq
  ```
 
-
-
-
-
-
-
-Referencia :
-
+Referencias :
+ * [Working with buildx](https://docs.docker.com/buildx/working-with-buildx/)
 
 
 ## Github Actions
