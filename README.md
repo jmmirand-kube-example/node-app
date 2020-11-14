@@ -21,7 +21,7 @@ publica en docker-hub [node-app-test-hello-world](https://hub.docker.com/reposit
 ##  Referencias
 
  * [ Actions Docker Buildx ](https://github.com/marketplace/actions/docker-buildx)
- * [ Docker Buildx ] (https://github.com/docker/buildx)
+ * [ Docker Buildx ](https://github.com/docker/buildx)
  * [ Build and push docker images ](https://github.com/marketplace/actions/build-and-push-docker-images)
 
 
