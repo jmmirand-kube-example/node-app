@@ -1,16 +1,16 @@
-name: buildx
+name: Build Docker Multi-Arch with Buildx edge
 
-on:
-  workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
-        # Default value if no value is explicitly provided
-        default: 'jmmirand'
-        # Input has to be provided for the workflow to run
-        required: true
+on: push
+#  workflow_dispatch:
+#    # Inputs the workflow accepts.
+#    inputs:
+#      name:
+#        # Friendly description to be shown in the UI instead of 'name'
+#        description: 'Person to greet'
+#        # Default value if no value is explicitly provided
+#        default: 'jmmirand'
+#        # Input has to be provided for the workflow to run
+#        required: true
 
 jobs:
   buildx:
@@ -49,10 +49,10 @@ jobs:
       -
         name: Set up Docker Buildx
         uses: crazy-max/ghaction-docker-buildx@v3
-      -
-        name: Docker Buildx (build)
-        run: |
-          docker buildx build --output "type=image,push=false" ${{ steps.prepare.outputs.buildx_args }}
+#      -
+#        name: Docker Buildx (build)
+#        run: |
+#          docker buildx build --output "type=image,push=false" ${{ steps.prepare.outputs.buildx_args }}
       -
         name: Login to DockerHub
         if: success() && github.event_name != 'pull_request'
@@ -65,8 +65,8 @@ jobs:
         if: success() && github.event_name != 'pull_request'
         run: |
           docker buildx build --output "type=image,push=true" ${{ steps.prepare.outputs.buildx_args }}
-      -
-        name: Inspect image
-        if: always() && github.event_name != 'pull_request'
-        run: |
-          docker buildx imagetools inspect ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }}
+#      -
+#        name: Inspect image
+#        if: always() && github.event_name != 'pull_request'
+#        run: |
+#          docker buildx imagetools inspect ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }}
