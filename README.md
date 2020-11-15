@@ -129,19 +129,27 @@ Sobre una imagen ubuntu instalamos docker.
   * Instalmaos el repositorio de docker
   * Instlamos el Contenedor docker-ce
 
-En la máquina bionic viene instalada por defecto 18.06.0-ce
+En la máquina bionic viene instalada por defecto 18.06.0-ce y con el primer JavaScript
+actualizamos la versión a 19.03.13
 
-```  
+``` yaml  
 language: bash
 dist: bionic
 before_install:
+# update docker
   - sudo rm -rf /var/lib/apt/lists/*
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) edge"
   - sudo apt-get update
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+# update docker-buildx
+  - mkdir -vp ~/.docker/cli-plugins/
+  - curl --silent -L "https://github.com/docker/buildx/releases/download/v0.3.0/buildx-v0.3.0.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
+  - chmod a+x ~/.docker/cli-plugins/docker-buildx
+
 script:
   - docker version
+  - docker buildx version
 ```
 
 
