@@ -80,6 +80,17 @@ publica en docker-hub en amd64 y arm/v7. [node-app-test-hello-world](https://hub
 
 Con esta acción (v2) definimos los parámetros de construcción y push al registro.
 
+## Github Actions
+
+Hay dos workflows para Github Actions que publican la misma imagen
+publica en docker-hub en amd64 y arm/v7. [node-app-test-hello-world](https://hub.docker.com/repository/registry-1.docker.io/jmmirand/node-app-test-hello-world/tags?page=1)
+
+### docker/build-push-action@v2
+
+**./node-app/.github/workflows/manual.yml**
+
+Con esta acción (v2) definimos los parámetros de construcción y push al registro.
+
 ```
 - name: Login to DockerHub
   uses: docker/login-action@v1
