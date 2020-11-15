@@ -1,5 +1,9 @@
 language: bash
 dist: bionic
+env:
+  - CI_USER:   secure: "Kamps8uGYdFl1Fi9gPNJZeRq0z++HG7AiItq+hdil3v1lkO8jn+H2xgqk0O9mBwfE18S/boZUcRNzxd+cLuL6hM/yImYLZsGpdYmdVGwTdET5BIhM9e8qqMy9HPEx02AfY4B62oEiVg0nG2u552iDeZ9+umUr5wmAUFCVET8SWKRdh5sBKjix9b2eAjIrEHVJ4zv7hBg39YzbWlMmOrgvGvsH79x48a9+hj5tkSNvp+oiNBFKFyff+Yw66gR1Bfnd1KsMb6YuiC8mEL+btnNOEYKz0XCFYN+ZfpGYIeaYI6n/sTaCpAcfvdEulok6WvFm5eIaUhiaXVelWfsjEeDBroHgGWUyprESspAeMF5rcPX/lNnWwEPNJn3bCPixAE0bqk3aB7k0fGdNyM5lENGmGRnTr8qitqvxxuOdZ17eDjZw4M+VV+c26oFzSUlSGpDLP+vDJ8AwweC/jeuefgtQ521uCtSEDdQT7cZOQlg57lYlwAPB528b9mwWuCQhCb0ZuBrf4y7VBXDdHhtA8a2f7SoLms05c5TlHppfayyanwzCNrptVCUoMXoLBv2HBgoE6zwjWEGY3sjSegINCbw3TGx8M2ZkH2qQhxP/tJ9TZHl1YlNWH7GR3BSPWyrkJAUUKv1yljzwV2kwNK3dJjDZZMVdQe89qlGl4wy5YrGRFw="
+  - CI_PASSWORD:   secure: "UHzAPtHg+VZRXtUvv/HVpiA1CEckUa/duaWHq4gSjq3roPBetOy9pZ8sNlg1/RHjgLX7zaUu9uJFit4sdxPEYKh5EbWDbAHUYb/g1l+wPLRLWJDrtvaZeN10KZ1XhzJtDNVGhLWZ1rM4K9Ztc9btZxk37MPDZSnMepNPQ/NQ8giIpqc6U2wxYyYK+CqZsHfqYFXaIs9n5XAA/4fK00quCpp8eKWDU6iphgc3BIA5gCNbiXlQzNn9X6BAxapoSwTue+8rhQYDCP+tz2n8ENI8h3yfNR24OqC35rPLpKEXQxu0QM6faLSKDxHfqcuHhr/Qi97VoufYK3nJuQtOtlPzhZA4puEjKIydDsEYWBS+5YQdgbysOOnipvx/+qRe0/00BYDNxHqH4eW826LCDjvpOTiMC1O6DL68oQHqLOURttcaynFBNIIKOmD3Vry0I+rmZUZB1VVGv9YjdJrkkZub1E3AIDITVgeiMngQb+lfT0nGoPA8bX8XPBGhzh4hm2aWcH8Y7aW6hJLV19nJOePV0LQTuyWcln4qG67JLBxKkTqW+QlfBppZ/F6sqVpC+ln7UHqRVQ1cjFV6lbkem3CuagSNo22yZH2rdDhqlCC2o1FsEtM3jOR6gxRXso7X9kZ4wmDrLUKym8tMNMLHibeiiz5Np0fzUnyxfrUfMs4WahE="
+
 before_install:
 # update docker
   - sudo rm -rf /var/lib/apt/lists/*
@@ -15,3 +19,6 @@ before_install:
 script:
   - docker version
   - docker buildx version
+  - docker login -u $CI_USER -p $CI_PASSWORD
+  - docker buildx create --use
+  - docker buildx build --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag jmmirand/node-app-test-hello-world:latest-gitlab .
