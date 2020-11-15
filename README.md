@@ -118,6 +118,36 @@ Se construye la imagen con el comando buildx.
 
   * *manual2.yml* : Construye la imagen con buildx
 
+## Travis
+
+En Travis también podemos gestionar la carga y publicación de las imágenes multi-arch.
+
+Creando el fichero .travis.yaml y damos permisos al repositorio.
+
+Sobre una imagen ubuntu instalamos docker.
+  * Añadimos la key de docker para apt
+  * Instalmaos el repositorio de docker
+  * Instlamos el Contenedor docker-ce
+
+En la máquina bionic viene instalada por defecto 18.06.0-ce
+
+```  
+language: bash
+dist: bionic
+before_install:
+  - sudo rm -rf /var/lib/apt/lists/*
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) edge"
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+script:
+  - docker version
+```
+
+
+### Referecias
+  [Multi-arch build, what about Travis?](https://www.docker.com/blog/multi-arch-build-what-about-travis/)
+
 
 ##  Referencias
 
