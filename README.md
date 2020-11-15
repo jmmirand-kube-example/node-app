@@ -62,6 +62,7 @@ push en dockerhub.
 
 * **Referencias** :
   * [Working with buildx**](https://docs.docker.com/buildx/working-with-buildx/)
+  * [Video Youtube buildx](https://www.youtube.com/channel/UCrBzBOMcUVV8ryyAU_c6P5g)
 
 
 # Motores de Integración Continua (CI)
