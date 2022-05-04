@@ -14,3 +14,12 @@ jobs:
          myToken: ${{ secrets.GITHUB_TOKEN }}
          num_runs: 12
 
+  call-workflow-passing-data:
+    uses: jmmirand-work/shared-workflows/.github/workflows/clean-workflows-runs.yaml@main
+    with:
+      num_runs: 5
+    secrets:
+      myToken: ${{ secrets.GITHUB_TOKEN }}
+
+
+
