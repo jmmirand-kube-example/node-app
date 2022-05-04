@@ -3,7 +3,7 @@ name: Clean Runs and Logs Workflows
 on: [push]
  
 jobs:
-  run-javascript-action:
+  clean-workflows-logs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -14,7 +14,8 @@ jobs:
          myToken: ${{ secrets.GITHUB_TOKEN }}
          num_runs: 12
 
-  call-workflow-passing-data:
+  call-workflow-clean-workflows-logs:
+    needs: clean-workflows-logs
     uses: jmmirand-work/shared-workflows/.github/workflows/clean-workflows-runs.yaml@main
     with:
       num_runs: 5
